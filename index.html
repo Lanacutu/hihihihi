@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR Love Message</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://rawcdn.githack.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/AR.js/aframe/build/aframe-ar.js"></script>
   <style>
     body {
       margin: 0;
@@ -18,9 +18,9 @@
   </style>
 </head>
 <body>
-  <a-scene embedded arjs>
+  <a-scene embedded arjs='sourceType: webcam;'>
     <!-- Marker for AR -->
-    <a-marker preset="kanji">
+    <a-marker preset="hiro">
       <a-text value="I Love You!" align="center" position="0 1.5 0" color="#FF69B4" scale="2 2 2"></a-text>
     </a-marker>
 
