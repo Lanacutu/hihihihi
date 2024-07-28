@@ -4,12 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR Love Message</title>
-  <script src="https://unpkg.com/aframe/dist/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    a-scene {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
   <a-scene>
     <a-sky color="#ECECEC"></a-sky>
-    <a-text value="I Love You!" align="center" position="0 1.5 -3"></a-text>
+    <a-text value="I Love You!" align="center" position="0 1.5 -3" color="#FF69B4" scale="2 2 2"></a-text>
     <a-camera></a-camera>
   </a-scene>
 </body>
