@@ -57,7 +57,7 @@
       }
       50% {
         transform: scale(1.5);
-        opacity: 0.7;
+        opacity: 0.5;
       }
       100% {
         transform: scale(0);
@@ -70,6 +70,10 @@
       font-weight: bold;
       margin-top: 20px;
       transition: opacity 0.5s ease-in-out;
+      opacity: 0; /* Start hidden */
+    }
+    .message.show {
+      opacity: 1; /* Show message */
     }
     .message img {
       max-width: 300px;
@@ -94,8 +98,9 @@
       balloonElement.classList.add('pop-animation');
       setTimeout(() => {
         balloonElement.style.display = 'none'; // Hide balloon after animation
-        document.getElementById('message').innerHTML = `<p>${message}</p>`;
-        document.getElementById('message').style.opacity = 1; // Show message
+        const messageElement = document.getElementById('message');
+        messageElement.innerHTML = `<p>${message}</p>`;
+        messageElement.classList.add('show'); // Show message
       }, 500); // Duration of the pop animation
     }
   </script>
