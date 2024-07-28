@@ -32,7 +32,7 @@
       position: relative;
       display: inline-block;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease-in-out;
     }
     .balloon:hover {
       transform: scale(1.1);
@@ -47,11 +47,29 @@
       left: 45px;
       border-radius: 5px;
     }
+    .pop-animation {
+      animation: pop 0.5s forwards;
+    }
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+    }
     .message {
       font-size: 24px;
       color: #ff1493;
       font-weight: bold;
       margin-top: 20px;
+      transition: opacity 0.5s ease-in-out;
     }
     .message img {
       max-width: 300px;
@@ -63,17 +81,22 @@
 <body>
   <h1>Pop the Balloons for Love Messages!</h1>
   <div class="balloon-container">
-    <div class="balloon" onclick="popBalloon('You make my heart soar! 💕')"></div>
-    <div class="balloon" onclick="popBalloon('Every day with you is a gift! 🎁')"></div>
-    <div class="balloon" onclick="popBalloon('You are my sunshine! ☀️')"></div>
-    <div class="balloon" onclick="popBalloon('My love for you grows every day! 🌹')"></div>
-    <div class="balloon" onclick="popBalloon('You are my dream come true! ✨')"></div>
+    <div class="balloon" onclick="popBalloon('You make my heart soar! 💕', this)"></div>
+    <div class="balloon" onclick="popBalloon('Every day with you is a gift! 🎁', this)"></div>
+    <div class="balloon" onclick="popBalloon('You are my sunshine! ☀️', this)"></div>
+    <div class="balloon" onclick="popBalloon('My love for you grows every day! 🌹', this)"></div>
+    <div class="balloon" onclick="popBalloon('You are my dream come true! ✨', this)"></div>
   </div>
   <div id="message" class="message"></div>
 
   <script>
-    function popBalloon(message) {
-      document.getElementById('message').innerHTML = `<p>${message}</p>`;
+    function popBalloon(message, balloonElement) {
+      balloonElement.classList.add('pop-animation');
+      setTimeout(() => {
+        balloonElement.style.display = 'none'; // Hide balloon after animation
+        document.getElementById('message').innerHTML = `<p>${message}</p>`;
+        document.getElementById('message').style.opacity = 1; // Show message
+      }, 500); // Duration of the pop animation
     }
   </script>
 </body>
